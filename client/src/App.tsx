@@ -11,8 +11,8 @@ import Admin from "./pages/Admin";
 function Router() {
   return (
     <Switch>
-      <Route path="" component={Home} />
       <Route path="/admin" component={Admin} />
+      <Route path="" component={Home} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
