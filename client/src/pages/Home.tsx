@@ -3,7 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2, Plus, X } from "lucide-react";
+import { Loader2, Plus, X, CloudUpload } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -344,14 +345,21 @@ export default function Home() {
                 <Label htmlFor="company_logo" className="text-sm font-medium">
                   Company logo <span className="text-red-500">*</span>
                 </Label>
-                <Input
-                  id="company_logo"
-                  name="company_logo"
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) {
+                <label
+                  htmlFor="company_logo"
+                  className="mt-2 block border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-purple-400 hover:bg-purple-50 transition-colors"
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    e.currentTarget.classList.add("border-purple-400", "bg-purple-50");
+                  }}
+                  onDragLeave={(e) => {
+                    e.currentTarget.classList.remove("border-purple-400", "bg-purple-50");
+                  }}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    e.currentTarget.classList.remove("border-purple-400", "bg-purple-50");
+                    const file = e.dataTransfer.files?.[0];
+                    if (file && file.type.startsWith("image/")) {
                       const reader = new FileReader();
                       reader.onload = (event) => {
                         setFormData((prev) => ({
@@ -360,20 +368,55 @@ export default function Home() {
                         }));
                       };
                       reader.readAsDataURL(file);
+                    } else {
+                      toast.error("Please upload an image file");
                     }
                   }}
-                  required
-                  className="mt-1"
-                />
-                {formData.company_logo && (
-                  <div className="mt-2">
-                    <img
-                      src={formData.company_logo}
-                      alt="Company logo preview"
-                      className="h-16 w-auto rounded border border-gray-200"
-                    />
-                  </div>
-                )}
+                >
+                  {formData.company_logo ? (
+                    <div className="flex flex-col items-center gap-3">
+                      <img
+                        src={formData.company_logo}
+                        alt="Company logo preview"
+                        className="h-20 w-auto rounded border border-gray-200"
+                      />
+                      <p className="text-sm text-gray-600">Click or drag to change logo</p>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center gap-3">
+                      <CloudUpload className="w-10 h-10 text-gray-400" />
+                      <div>
+                        <p className="text-gray-700 font-medium">Click to upload your logo</p>
+                        <p className="text-xs text-gray-500 mt-1">PNG, JPG, SVG — max 5MB</p>
+                      </div>
+                    </div>
+                  )}
+                  <Input
+                    id="company_logo"
+                    name="company_logo"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        if (file.size > 5 * 1024 * 1024) {
+                          toast.error("File size must be less than 5MB");
+                          return;
+                        }
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            company_logo: event.target?.result as string,
+                          }));
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                    required
+                    className="hidden"
+                  />
+                </label>
               </div>
             </div>
           </Card>
