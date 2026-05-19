@@ -37,6 +37,7 @@ export default function Home() {
     rep_email: "",
     rep_phone: "",
     business_description: "",
+    company_logo: "",
     competitor_1: "",
     competitor_2: "",
     competitor_3: "",
@@ -338,6 +339,42 @@ export default function Home() {
                   {wordCount} / 100 words
                 </div>
               </div>
+
+              <div>
+                <Label htmlFor="company_logo" className="text-sm font-medium">
+                  Company logo <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="company_logo"
+                  name="company_logo"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          company_logo: event.target?.result as string,
+                        }));
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                  required
+                  className="mt-1"
+                />
+                {formData.company_logo && (
+                  <div className="mt-2">
+                    <img
+                      src={formData.company_logo}
+                      alt="Company logo preview"
+                      className="h-16 w-auto rounded border border-gray-200"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </Card>
 
@@ -434,11 +471,11 @@ export default function Home() {
             </Button>
 
             <div className="mt-3 text-center text-sm">
-              {products.length < 10 ? (
+              {products.length < 5 ? (
                 <span className="text-red-500 font-medium">
-                  {products.length} of 10 added — please add{" "}
-                  {10 - products.length} more product
-                  {10 - products.length !== 1 ? "s" : ""}
+                  {products.length} of 5 added — please add{" "}
+                  {5 - products.length} more product
+                  {5 - products.length !== 1 ? "s" : ""}
                 </span>
               ) : (
                 <span className="text-teal-600 font-medium">
@@ -492,7 +529,7 @@ export default function Home() {
             </p>
             <Button
               type="submit"
-              disabled={submitting || products.length < 10}
+              disabled={submitting || products.length < 5}
               className="bg-purple-600 hover:bg-purple-700 disabled:opacity-60 px-8"
             >
               {submitting ? (
