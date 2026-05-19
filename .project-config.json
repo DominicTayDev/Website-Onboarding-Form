@@ -4,32 +4,12 @@
   "dev_command": "pnpm run dev",
   "env_vars": {},
   "experiments": null,
-  "git_remote": {
-    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663585019614/kZciAc2F6JafqsLfcipjzP",
-    "access_key_id": "ASIAZV3A2ECZNW35ZOT6",
-    "secret_access_key": "CkjR1KvUUbWsz55+lI6xSitYpU6we7UPpPkk8AXZ",
-    "session_token": "IQoJb3JpZ2luX2VjEAwaCXVzLWVhc3QtMSJIMEYCIQDiwHwUP7geDaT8K8CiqzZkawGA7sQZVXMIkiQTmSfWUAIhAP3ZEKZPNa5FE0HFMqm7pvhLjKiz+zyMXKcadfPeKs/kKv4DCNT//////////wEQBBoMNjY1Mzg2MDk4ODY2IgzU/6zXhDPWW2iYstQq0gPN7oyDj/8Wx0pRrt/DOuvr2lNlXVrxEgA4yHpqrbaH2YBKd+cQlex3mpn/SQ77SavFEhCOe1HEBrumVrSLpXOWTr10DNkGuHnLWz0Jwx7MZtclROUPo7ETkrj8zMirK0VKgDtrO4V1PCdiEbS8CJIZ4IrUL9rjgjaL6ASmozRMQ3Fa/jPY1Sg47aas2YzYd6paBTzWIRXqL2wHxjs0TqewZTGqgiBQEZdy9HtAdpnNZGpZ+bOerlHbi3EkV2taTbqFBt82JxTcobYbSmZkXVw1kl14O768J45JmmKcJ/z/Nr6tl4T6Tc3UI9Gr04kI+TpcDudtKBWZGDblb1WdgQTkt9SnkkNWrEtpJlulqdq9mSbvay8JKGELr45nPpJgAneWC4wBXxZk9r5VLs6yw0gFQwjz0j/4FyfZD6W2j1/kqu7hZgFcnCutqmQWQItCqVWczjvwLso663oxmJZDJw4GvCvtdMgRTpB1VoJ3mpr0SGzBcgSnF4haUkSsGLl19tBN3P2kALdU3kjz6zaeNCw/1GZqgFzaknjGWwNG1992pDQTnpAQRXBnsxZN0vLzeXeuM06zazkXCl29IFhPXW3L9XFiYGBqiD6c1wst54vz7jF4MJGMsdAGOpwBQdJYoDfUvVqEFKOd8cDF3/3hqSvB9oSOUTBlJdNx+TxbWEeLv9tLxYmgeH5hv199zDmcIpt7EwmGWu++b4yRhAtWN6wjX4UsaljvjvfNVGIs66DUpakXLKz/xBMK77T+Sfq1EF+AanyiLf6Vvn9AihGhJyfiD7Z0IeBrfFu20Qs+ZncXGcLhKY6jlw3xLU1v7VsyYKorhaD+VHc+",
-    "expiration": "2026-05-19T23:14:25.000Z"
-  },
+  "git_remote": {},
   "name": "wordpress-onboarding-form",
   "path": "/home/ubuntu/wordpress-onboarding-form",
   "port": 3000,
-  "secrets": {
-    "BUILT_IN_FORGE_API_KEY": "iRpAiEYeR4uHRbhgykf5C5",
-    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
-    "JWT_SECRET": "dhibp5rk9Xkt6Ef9pzPX8A",
-    "OAUTH_SERVER_URL": "https://api.manus.im",
-    "OWNER_NAME": "Dominic Tay",
-    "OWNER_OPEN_ID": "Vp6eN2m9SxyLV9cCXUSSUG",
-    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
-    "VITE_ANALYTICS_WEBSITE_ID": "de711b08-c281-4a17-a430-d109c31e8f8d",
-    "VITE_APP_ID": "kZciAc2F6JafqsLfcipjzP",
-    "VITE_APP_LOGO": "",
-    "VITE_APP_TITLE": "WordPress Onboarding Form",
-    "VITE_FRONTEND_FORGE_API_KEY": "njL4o4w5qgzJ2fRRt4G9aU",
-    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
-    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
-  },
+  "secrets": {},
   "template_id": "web-static",
-  "test_command": "pnpm test"
+  "test_command": "pnpm test",
+  "note": "Sensitive credentials removed for GitHub deployment"
 }
