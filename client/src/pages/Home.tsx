@@ -44,10 +44,10 @@ export default function Home() {
     competitor_5: "",
   });
 
-  // Initialize 10 products on mount
+  // Initialize 5 products on mount
   useEffect(() => {
     const initialProducts: Product[] = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       initialProducts.push({
         id: i + 1,
         name: "",
@@ -56,7 +56,7 @@ export default function Home() {
       });
     }
     setProducts(initialProducts);
-    setProdCount(10);
+    setProdCount(5);
   }, []);
 
   const addProduct = () => {
@@ -96,8 +96,8 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (products.length < 10) {
-      toast.error("Please add at least 10 products before submitting.");
+    if (products.length < 5) {
+      toast.error("Please add at least 5 products before submitting.");
       return;
     }
 
@@ -350,7 +350,7 @@ export default function Home() {
               <div>
                 <h3 className="font-bold text-gray-900">Product listings</h3>
                 <p className="text-sm text-gray-500">
-                  Minimum 10 products required for your e-commerce shop
+                  Minimum 5 products required for your e-commerce shop
                 </p>
               </div>
             </div>
@@ -362,7 +362,7 @@ export default function Home() {
                     <span className="text-xs font-bold bg-teal-100 text-teal-700 px-2 py-1 rounded">
                       Product {idx + 1}
                     </span>
-                    {products.length > 10 && (
+                    {products.length > 5 && (
                       <button
                         type="button"
                         onClick={() => removeProduct(product.id)}
