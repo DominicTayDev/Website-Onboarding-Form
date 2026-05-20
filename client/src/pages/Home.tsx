@@ -40,6 +40,10 @@ export default function Home() {
     rep_phone: "",
     business_description: "",
     company_logo: "",
+    facebook_url: "",
+    instagram_url: "",
+    tiktok_url: "",
+    linkedin_url: "",
     competitor_1: "",
     competitor_2: "",
     competitor_3: "",
@@ -418,6 +422,68 @@ export default function Home() {
                     className="hidden"
                   />
                 </label>
+              </div>
+
+              <div className="border-t border-gray-200 pt-4 mt-4">
+                <h4 className="text-sm font-semibold text-gray-900 mb-4">Social Media Links <span className="text-gray-500 font-normal">(Optional)</span></h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="facebook_url" className="text-sm font-medium">
+                      Facebook
+                    </Label>
+                    <Input
+                      id="facebook_url"
+                      name="facebook_url"
+                      type="url"
+                      placeholder="https://facebook.com/yourpage"
+                      value={formData.facebook_url}
+                      onChange={handleFormChange}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="instagram_url" className="text-sm font-medium">
+                      Instagram
+                    </Label>
+                    <Input
+                      id="instagram_url"
+                      name="instagram_url"
+                      type="url"
+                      placeholder="https://instagram.com/yourprofile"
+                      value={formData.instagram_url}
+                      onChange={handleFormChange}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="tiktok_url" className="text-sm font-medium">
+                      TikTok
+                    </Label>
+                    <Input
+                      id="tiktok_url"
+                      name="tiktok_url"
+                      type="url"
+                      placeholder="https://tiktok.com/@yourprofile"
+                      value={formData.tiktok_url}
+                      onChange={handleFormChange}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="linkedin_url" className="text-sm font-medium">
+                      LinkedIn
+                    </Label>
+                    <Input
+                      id="linkedin_url"
+                      name="linkedin_url"
+                      type="url"
+                      placeholder="https://linkedin.com/company/yourcompany"
+                      value={formData.linkedin_url}
+                      onChange={handleFormChange}
+                      className="mt-1"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </Card>
