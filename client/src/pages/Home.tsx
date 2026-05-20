@@ -13,6 +13,7 @@ interface Product {
   name: string;
   desc: string;
   price: string;
+  photo?: string;
 }
 
 /**
@@ -498,6 +499,74 @@ export default function Home() {
                       className="mt-1 text-sm resize-none"
                       style={{ minHeight: "65px" }}
                     />
+                  </div>
+
+                  <div>
+                    <Label className="text-xs font-medium">
+                      Product photo <span className="text-gray-500">(Optional)</span>
+                    </Label>
+                    <label
+                      className="mt-2 flex items-center justify-center w-full p-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-teal-400 hover:bg-teal-50 transition-colors"
+                      onDragOver={(e) => {
+                        e.preventDefault();
+                        e.currentTarget.classList.add("border-teal-400", "bg-teal-50");
+                      }}
+                      onDragLeave={(e) => {
+                        e.currentTarget.classList.remove("border-teal-400", "bg-teal-50");
+                      }}
+                      onDrop={(e) => {
+                        e.preventDefault();
+                        e.currentTarget.classList.remove("border-teal-400", "bg-teal-50");
+                        const file = e.dataTransfer.files?.[0];
+                        if (file && file.type.startsWith("image/")) {
+                          const reader = new FileReader();
+                          reader.onload = (event) => {
+                            updateProduct(product.id, "photo", event.target?.result as string);
+                          };
+                          reader.readAsDataURL(file);
+                        } else {
+                          toast.error("Please upload an image file");
+                        }
+                      }}
+                    >
+                      {product.photo ? (
+                        <div className="flex flex-col items-center gap-2">
+                          <img
+                            src={product.photo}
+                            alt="Product preview"
+                            className="h-16 w-auto rounded border border-gray-200"
+                          />
+                          <p className="text-xs text-gray-600">Click or drag to change photo</p>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center gap-2">
+                          <CloudUpload className="w-5 h-5 text-gray-400" />
+                          <div className="text-center">
+                            <p className="text-xs text-gray-600 font-medium">Click or drag to upload</p>
+                            <p className="text-xs text-gray-500 mt-0.5">PNG, JPG — max 2MB</p>
+                          </div>
+                        </div>
+                      )}
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            if (file.size > 2 * 1024 * 1024) {
+                              toast.error("File size must be less than 2MB");
+                              return;
+                            }
+                            const reader = new FileReader();
+                            reader.onload = (event) => {
+                              updateProduct(product.id, "photo", event.target?.result as string);
+                            };
+                            reader.readAsDataURL(file);
+                          }
+                        }}
+                        className="hidden"
+                      />
+                    </label>
                   </div>
                 </Card>
               ))}
