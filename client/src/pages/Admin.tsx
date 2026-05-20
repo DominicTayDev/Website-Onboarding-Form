@@ -61,9 +61,9 @@ export default function Admin() {
   const fetchSubmissions = async () => {
     setLoading(true);
     try {
-      // Fetch from Google Sheets API
+      // Fetch from Google Apps Script backend
       const response = await fetch(
-        `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?key=AIzaSyDgA3s_VqKmPjBPXrKQMGlx3uEqPgpqRvU&includeGridData=true`,
+        "https://script.google.com/macros/s/AKfycbzC4NSBiGtXgkdMc7NYUETlkyz8nT6f2yzk4bNpC_qU2Qn7ADPgdQQ35PnR601HT3yZmw/exec?action=getSubmissions",
         { method: "GET" }
       );
 
@@ -73,9 +73,12 @@ export default function Admin() {
 
       const data = await response.json();
       
-      // Parse sheet data (this is a simplified version)
-      // In production, you'd parse the actual sheet values
-      toast.success("Data refreshed successfully!");
+      if (data.success && data.submissions) {
+        setSubmissions(data.submissions);
+        toast.success("Data refreshed successfully!");
+      } else {
+        throw new Error("Invalid response from server");
+      }
     } catch (error) {
       console.error(error);
       toast.error("Failed to fetch submissions. Using demo data.");
