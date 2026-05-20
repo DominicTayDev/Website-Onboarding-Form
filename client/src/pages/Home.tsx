@@ -117,7 +117,7 @@ export default function Home() {
       };
 
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbz4-INKF120HM7iKWvimH9lHq7rD6sJ7SJO8TOzwfp52SYZVTZgogOd_iRw0As20xbwg/exec",
+        "https://script.google.com/macros/s/AKfycbzC4NSBiGtXgkdMc7NYUETlkyz8nT6f2yzk4bNpC_qU2Qn7ADPgdQQ35PnR601HT3yZmw/exec",
         {
           method: "POST",
           mode: "no-cors",
